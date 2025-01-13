@@ -22,7 +22,7 @@ jobs:
           chmod 600 id_ed25519
     - name: Run deploy script
       run: |
-          scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./deployment/bin/deploy.sh ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:$HOME/deploy.sh
-          scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:$HOME/.ssh/id_ed25519
-          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_TESTING }} "chown root:root $HOME/deploy.sh && chmod +x $HOME/deploy.sh"
-          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_TESTING }} "$HOME/deploy.sh ${{ secrets.MYSQL_PASSWORD }}"
+          scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./deployment/bin/deploy.sh ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:/home/diego/deploy.sh
+          scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:/home/diego/.ssh/id_ed25519
+          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_TESTING }} "chown root:root /home/diego/deploy.sh && chmod +x /home/diego/deploy.sh"
+          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_TESTING }} "/home/diego/deploy.sh ${{ secrets.MYSQL_PASSWORD }}"
