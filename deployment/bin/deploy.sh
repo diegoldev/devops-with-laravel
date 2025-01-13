@@ -15,9 +15,9 @@ git config --global --add safe.directory $PROJECT_DIR
 
 # the project has not been cloned yet (first deploy)
 if [ ! -d $PROJECT_DIR"/.git" ]; then
-  GIT_SSH_COMMAND='ssh -i $HOME/.ssh/id_ed25519 -o IdentitiesOnly=yes' git clone git@github.com:diegoldev/devops-with-laravel.git .
+  GIT_SSH_COMMAND='ssh -i /home/diego/.ssh/id_ed25519 -o IdentitiesOnly=yes' git clone git@github.com:diegoldev/devops-with-laravel.git .
 else
-  GIT_SSH_COMMAND='ssh -i $HOME/.ssh/id_ed25519 -o IdentitiesOnly=yes' git pull
+  GIT_SSH_COMMAND='ssh -i /home/diego/.ssh/id_ed25519 -o IdentitiesOnly=yes' git pull
 fi
 
 cd $PROJECT_DIR"/frontend"
