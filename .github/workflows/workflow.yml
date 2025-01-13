@@ -24,6 +24,5 @@ jobs:
       run: |
           scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./deployment/bin/deploy.sh ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:${{ vars.REMOTE_PATH }}/deploy.sh
           scp -C -o StrictHostKeyChecking=no -i ./id_ed25519 ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }}:${{ vars.REMOTE_PATH }}/.ssh/id_ed25519
-          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }} "chown root:root ${{ vars.REMOTE_PATH }}/deploy.sh && chmod +x 
-          ${{ vars.REMOTE_PATH }}/deploy.sh"
+          ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }} "chown root:root ${{ vars.REMOTE_PATH }}/deploy.sh && chmod +x ${{ vars.REMOTE_PATH }}/deploy.sh"
           ssh -tt -o StrictHostKeyChecking=no -i ./id_ed25519 ${{ secrets.SSH_CONNECTION_DIGITAL_OCEAN }} "${{ vars.REMOTE_PATH }}/deploy.sh ${{ secrets.MYSQL_PASSWORD }}"
