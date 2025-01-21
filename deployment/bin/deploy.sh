@@ -21,8 +21,8 @@ else
 fi
 
 cd $PROJECT_DIR"/frontend"
-#npm install
-#npm run build
+npm install
+npm run build
 
 cd $PROJECT_DIR"/api"
 
