@@ -19,7 +19,9 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('posts/export', [PostController::class, 'export'])->name('posts.export');
-
+    Route::get('me', function (){
+        return auth()->user();
+    })->name('me');
     Route::patch('posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
 
     Route::apiResource('posts', PostController::class);
